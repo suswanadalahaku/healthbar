@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="lg:w-1/2">
-                <img src="{{ asset('storage/assets/dashboard_bg.png') }}" alt="dashboard_bg" class="w-full max-w-md mx-auto">
+                <img src="{{ asset('assets/dashboard_bg.png') }}" alt="dashboard_bg" class="w-full max-w-md mx-auto">
             </div>
         </div>
 

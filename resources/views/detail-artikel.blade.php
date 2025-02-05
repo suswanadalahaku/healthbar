@@ -16,7 +16,7 @@
             <!-- Gambar Artikel -->
             @if($article->image)
             <img 
-                src="{{ asset('storage/' . $article->image) }}" 
+                src="{{ asset($article->image) }}"
                 alt="{{ $article->title }}" 
                 class="w-full h-auto mb-6 rounded-lg shadow-md">
             @endif

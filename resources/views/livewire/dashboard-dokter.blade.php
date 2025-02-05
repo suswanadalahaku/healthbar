@@ -1,6 +1,6 @@
 <div wire:poll.5 class="p-6 bg-gray-100 rounded-lg shadow-md">
     <h1 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-        <img src="{{ asset('storage/assets/users.svg') }}" class="w-6 h-6 text-blue-600 mr-2">
+        <img src="{{ asset('assets/users.svg') }}" class="w-6 h-6 text-blue-600 mr-2">
 
         List Pasien
     </h1>
@@ -39,7 +39,7 @@
                             <p class="text-gray-800 font-semibold text-lg">{{ $user->name }}</p>
                             <p class="text-gray-500 text-sm flex items-center justify-between">
                                 <span class="flex items-center">
-                                    <img src="{{ asset('storage/assets/message.svg') }}" class="w-4 h-4 mr-2">
+                                    <img src="{{ asset('assets/message.svg') }}" class="w-4 h-4 mr-2">
                                     {{ Str::limit($pesanTerakhir->message, 40) }}
                                 </span>
                                 <span class="ml-auto">{{ $pesanTerakhir->created_at->diffForHumans() }}</span>
