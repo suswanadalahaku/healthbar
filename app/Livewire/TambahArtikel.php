@@ -52,7 +52,10 @@ class TambahArtikel extends Component
         $imagePath = null;
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
+            $image = $request->file('image');
+            $filename = time() . '_' . $image->getClientOriginalName();
+            $path = $image->storeAs('images', $filename, 'public');
+            $imagePath = $path;
         }
 
         Articles::create([

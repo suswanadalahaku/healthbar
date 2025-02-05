@@ -51,9 +51,12 @@ class EditArtikel extends Component
         // Jika ada file gambar baru, hapus gambar lama dan simpan yang baru
         if ($request->hasFile('image')) {
             if ($article->image) {
-                Storage::delete($article->image);
+                Storage::disk('public')->delete($article->image);
             }
-            $article->image = $request->file('image')->store('images', 'public');
+            $image = $request->file('image');
+            $filename = time() . '_' . $image->getClientOriginalName();
+            $path = $image->storeAs('images', $filename, 'public');
+            $article->image = $path;
         }
 
         // Update judul dan konten artikel
