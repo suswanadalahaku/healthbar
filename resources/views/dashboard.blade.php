@@ -10,13 +10,13 @@
                 <div class="mt-4 flex space-x-4">
                     @guest
                         <!-- Jika belum login, tampilkan tombol Konsultasi -->
-                        <x-secondary-button :href="route('start-chat', ['receiverId' => 3])" wire:navigate class="bg-white text-gray-800">
+                        <x-secondary-button :href="route('start-chat', ['receiverId' => 2])" wire:navigate class="bg-white text-gray-800">
                             {{ __('Konsultasi') }}
                         </x-secondary-button>
                     @endguest
                     @auth
                         @if (auth()->user()->id_role == 3)
-                            <x-secondary-button :href="route('start-chat', ['receiverId' => 3])" wire:navigate class="bg-white text-gray-800">
+                            <x-secondary-button :href="route('start-chat', ['receiverId' => 2])" wire:navigate class="bg-white text-gray-800">
                                 {{ __('Konsultasi') }}
                             </x-secondary-button>
                             <x-secondary-button>
