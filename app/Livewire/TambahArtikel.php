@@ -49,19 +49,18 @@ class TambahArtikel extends Component
             'image.max' => 'Ukuran gambar maksimal 2 MB',
         ]);
 
-        $imagePath = null;
+        $imageData = null;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $filename = time() . '_' . $image->getClientOriginalName();
-            $path = $image->storeAs('images', $filename, 'public');
-            $imagePath = $path;
+            // Convert image to base64
+            $imageData = 'data:image/' . $image->getClientOriginalExtension() . ';base64,' . base64_encode(file_get_contents($image));
         }
 
         Articles::create([
             'title' => $request->title,
             'content' => $request->content,
-            'image' => $imagePath,
+            'image' => $imageData,
         ]);
 
         return redirect()->route('dashboard')->with('message', 'Content saved successfully.');

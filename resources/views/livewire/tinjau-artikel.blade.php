@@ -26,7 +26,7 @@
                     
                     @if($article->image)
                     <img 
-                        src="{{ asset('storage/' . $article->image) }}" 
+                        src="{{ $article->image }}"
                         alt="{{ $article->title }}" 
                         class="w-full h-52 object-cover skeleton !rounded-none"
                     >

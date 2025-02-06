@@ -48,15 +48,11 @@ class EditArtikel extends Component
         // Cari artikel berdasarkan ID, atau gagal jika tidak ditemukan
         $article = Articles::findOrFail($id);
 
-        // Jika ada file gambar baru, hapus gambar lama dan simpan yang baru
+        // Jika ada file gambar baru, konversi ke base64
         if ($request->hasFile('image')) {
-            if ($article->image) {
-                Storage::disk('public')->delete($article->image);
-            }
             $image = $request->file('image');
-            $filename = time() . '_' . $image->getClientOriginalName();
-            $path = $image->storeAs('images', $filename, 'public');
-            $article->image = $path;
+            // Convert image to base64
+            $article->image = 'data:image/' . $image->getClientOriginalExtension() . ';base64,' . base64_encode(file_get_contents($image));
         }
 
         // Update judul dan konten artikel
@@ -69,15 +65,12 @@ class EditArtikel extends Component
         ValidateArticles::updateOrCreate(
             ['id_artikel' => $article->id],
             [
-                'message' => 'Perubahan telah dikirim, menunggu validasi dokter.', // Pesan default
-                'status' => 'pending', // Status default setelah update
+                'message' => 'Perubahan telah dikirim, menunggu validasi dokter.',
+                'status' => 'pending',
             ]
         );
 
-        // Flash pesan keberhasilan ke session
         session()->flash('message', 'Artikel berhasil diperbarui.');
-
-        // Redirect kembali ke dashboard
         return redirect()->route('dashboard');
     }
 
