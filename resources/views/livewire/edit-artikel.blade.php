@@ -35,7 +35,7 @@
                 />
                 <div id="imagePreview" class="w-full h-full object-cover rounded-lg">
                     @if ($existingImage)
-                        <img src="{{ asset($existingImage) }}" alt="Existing Image" id="previewImg" />
+                        <img src="{{ $existingImage }}" alt="Existing Image" id="previewImg" />
                     @endif
                 </div>
             </div>
