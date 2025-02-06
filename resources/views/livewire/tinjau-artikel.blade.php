@@ -21,7 +21,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             @foreach($articles as $article)
-            <a href="{{ route('detail-artikel', $article->id) }}" class="block">
+            <a href="{{ route('detail-artikel', $article->id) }}" class="block" wire:navigate>
                 <div class="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
                     
                     @if($article->image)
